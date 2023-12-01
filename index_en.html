@@ -9,8 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <link href="//www.gipsyteam.ru/magnific-popup/magnific-popup.css" media="all" rel="stylesheet" type="text/css" onload="this.media='all'">
-    <script type="text/javascript" src="//www.gipsyteam.ru/magnific-popup/jquery.magnific-popup.min.js"></script>
+
 </head>
 
 <body>
@@ -324,6 +323,56 @@
             </div>
         </div>
     </footer>
+
+
+    <!-- POPUP -->
+    <div class="popup-overlay" style="display: none;">
+        <div class="popup">
+            <div class="popup__close"></div>
+            <img src="img/popup.webp" alt="" class="popup__img">
+            <div class="popup__content">
+                <div class="popup__title">
+                    Register on the Gipsyteam website and have a chance to win $100 to any e-wallet!
+                </div>
+                <div class="popup__subtitle">
+                    We'll raffle $100 among those who register by December 12.
+                </div>
+                <a href="" class="popup__button button">
+                    Register
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const page = document.querySelector('html');
+            const popup = document.querySelector('.popup-overlay');
+            const popupContent = document.querySelector('.popup');
+            const close = document.querySelector('.popup__close');
+
+            function showPopup() {
+                popup.removeAttribute('style');
+                page.style.overflow = "hidden";
+                popup.classList.add('animate-backdrop');
+                popupContent.classList.add('animate-opacity');
+                localStorage.setItem('popupShown', 'true');
+            }
+
+            function hidePopup() {
+                popup.style.display = "none";
+                page.style.overflow = "initial";
+            }
+
+            close.addEventListener('click', hidePopup);
+            if (!localStorage.getItem('popupShown')) {
+                setTimeout(showPopup, 3000);
+            }
+        });
+    </script>
+    <!-- POPUP -->
+
+
+
     <script>
         //faq
         const faqItems = document.querySelectorAll('.faq__item');

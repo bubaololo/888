@@ -1523,3 +1523,114 @@ section {
 .sp-link-wrapper {
     display: none;
 }
+
+
+/* popup */
+
+.popup-overlay {
+    z-index: 102;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .6);
+    backdrop-filter: blur(10px);
+}
+
+.popup {
+    width: 100%;
+    height: fit-content;
+    background-color: #fff;
+    display: flex;
+    z-index: 103;
+    position: relative;
+    flex-direction: column;
+    max-width: 90vw;
+    max-height: 100%;
+    margin: 0 5vw;
+    border-radius: 10px;
+    overflow: hidden;
+    animation: fadeInBlur 3s ease-out;
+}
+
+@media (min-width: 500px) {
+    .popup {
+        max-width: 340px;
+    }
+}
+
+.popup__close {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z' fill='%23FFFF'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border: 1px solid white;
+}
+
+.popup__close:hover {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z' fill='%23000'/%3E%3C/svg%3E");
+    background-color: rgba(255, 255, 255);
+}
+
+.popup__content {
+    padding: 0 20px;
+    text-align: center;
+    background-color: #FFD42E;
+}
+
+.popup__title {
+    margin-top: 28px;
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+}
+
+.popup__subtitle {
+    font-family: "Roboto", sans-serif;
+    margin-top: 16px;
+    font-size: 18px;
+    color: #474747;
+}
+
+.popup__button {
+    margin: 2ch 0 3ch;
+}
+
+@keyframes fadeInBlur {
+    from {
+        backdrop-filter: blur(0px);
+    }
+    to {
+        backdrop-filter: blur(10px);
+    }
+}
+
+.animate-backdrop {
+    animation: fadeInBlur 3s ease-out;
+}
+
+@keyframes fadeInOpacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-opacity {
+    animation: fadeInOpacity 1s ease-out;
+}
